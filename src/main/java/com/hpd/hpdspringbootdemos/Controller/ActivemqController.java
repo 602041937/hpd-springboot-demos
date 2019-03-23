@@ -18,4 +18,10 @@ public class ActivemqController {
         producerService.sendMessage(message);
         return "{code: 0}";
     }
+
+    @GetMapping("topic")
+    public Object send_pub_sub(String message) {
+        producerService.sendPubSubMessage(message);
+        return "{code: 0}";
+    }
 }
