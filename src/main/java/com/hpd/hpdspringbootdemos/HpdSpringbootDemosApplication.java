@@ -15,7 +15,7 @@ import javax.jms.Topic;
 @SpringBootApplication
 //@EnableScheduling
 //@Enab leAsync //开启异步任务
-@EnableJms
+//@EnableJms
 public class HpdSpringbootDemosApplication {
 
     @Bean //交给spring进行管理，方便后续进行注入

@@ -1,28 +1,30 @@
-package com.hpd.hpdspringbootdemos.Controller;
+package com.hpd.hpdspringbootdemos.bean;
 
-import com.hpd.hpdspringbootdemos.bean.AppConfig;
-import com.hpd.hpdspringbootdemos.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-
 @RestController
-public class TestController {
+public class BeanController {
 
     @Autowired
     private User user;
 
-    @GetMapping(value = "/test")
+    @GetMapping(value = "/bean/test")
     public Object test() {
-//        HashMap<String, Object> map = new HashMap<String, Object>();
-//        map.put("name", "hpd");
-//        map.put("age", 12);
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         User user1 = (User) context.getBean(User.class);
-        User user2 = (User) context.getBean("user");
+        User user2 = (User) context.getBean(User.class);
+//        boolean user1 = context.isSingleton("user");
         return user.toString() + user2.toString();
+    }
+
+    @GetMapping(value = "/bean/test2")
+    public Object test2() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig2.class);
+        User2 user = (User2) context.getBean(User2.class);
+        return user.toString();
     }
 }
